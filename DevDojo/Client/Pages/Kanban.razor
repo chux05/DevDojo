@@ -51,63 +51,67 @@
 </style>
 
 <h3>Kanban</h3>
+@if (Items != null)
+{
 
-<div class="wrapper">
 
-    <div class="categories">
+    <div class="wrapper">
 
-        <div class="cards">
-            <div class="cardHead">
-                Backlog
-            </div>
-            @foreach (var item in Items.Where(a => a.Status.Contains("Backlog")))
-            {
-                <div class="items">
-                    @item.Name
+        <div class="categories">
+
+            <div class="cards">
+                <div class="cardHead">
+                    Backlog
                 </div>
-            }
-        </div>
-
-
-        <div class="cards">
-            <div class="cardHead">
-                To do
+                @foreach (var item in Items.Where(a => a.Status.Contains("Backlog")))
+                {
+                    <div class="items">
+                        @item.Name
+                    </div>
+                }
             </div>
-            @foreach (var item in Items.Where(a => a.Status.Contains("Todo")))
-            {
-                <div class="items">
-                    @item.Name
-                </div>
-            }
-        </div>
 
-        <div class="cards">
-            <div class="cardHead">
-                Doing
-            </div>
-            @foreach (var item in Items.Where(a => a.Status.Contains("Doing")))
-            {
-                <div class="items">
-                    @item.Name
-                </div>
-            }
-        </div>
 
-        <div class="cards">
-            <div class="cardHead">
-                Done
-            </div>
-            @foreach (var item in Items.Where(a => a.Status.Contains("Done")))
-            {
-                <div class="items">
-                    @item.Name
+            <div class="cards">
+                <div class="cardHead">
+                    To do
                 </div>
-            }
+                @foreach (var item in Items.Where(a => a.Status.Contains("Todo")))
+                {
+                    <div class="items">
+                        @item.Name
+                    </div>
+                }
+            </div>
+
+            <div class="cards">
+                <div class="cardHead">
+                    Doing
+                </div>
+                @foreach (var item in Items.Where(a => a.Status.Contains("Doing")))
+                {
+                    <div class="items">
+                        @item.Name
+                    </div>
+                }
+            </div>
+
+            <div class="cards">
+                <div class="cardHead">
+                    Done
+                </div>
+                @foreach (var item in Items.Where(a => a.Status.Contains("Done")))
+                {
+                    <div class="items">
+                        @item.Name
+                    </div>
+                }
+            </div>
+
         </div>
 
     </div>
-
-</div>
+}
 
 @code {
 
@@ -115,6 +119,6 @@
 
     protected override async Task OnInitializedAsync()
     {
-        Items = await http.GetFromJsonAsync<List<TaskItem>>("api/Items");
+        Items = await http.GetFromJsonAsync<List<TaskItem>>("api/Item");
     }
 }
