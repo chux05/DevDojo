@@ -11,12 +11,12 @@ namespace DevDojo.Server
 {
     [ApiController]
     [Route("api/[controller]")]
-    public class ItemController : ControllerBase
+    public class ItemsController : ControllerBase
     {
-        private readonly ILogger<ItemController> _logger;
+        private readonly ILogger<ItemsController> _logger;
         private readonly AppDbContext _context;
 
-        public ItemController(ILogger<ItemController> logger, AppDbContext context)
+        public ItemsController(ILogger<ItemsController> logger, AppDbContext context)
         {
             _context = context;
             _logger = logger;
@@ -30,14 +30,14 @@ namespace DevDojo.Server
         }
 
         [HttpGet("{id}")]
-        public async Task<IActionResult> GetUser(int id)
+        public async Task<IActionResult> GetItem(int id)
         {
             var result = _context.Items.FirstOrDefault(x => x.Id == id);
             return Ok(result);
         }
 
         [HttpPost]
-        public async Task<IActionResult> AddUser([FromBody] TaskItem newItem)
+        public async Task<IActionResult> AddItem([FromBody] TaskItem newItem)
         {
             var result = await _context.Items.AddAsync(newItem);
             await _context.SaveChangesAsync();
@@ -45,7 +45,7 @@ namespace DevDojo.Server
         }
 
         [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteUser(int id)
+        public async Task<IActionResult> DeleteItem(int id)
         {
 
             if (id < 1)
@@ -77,7 +77,7 @@ namespace DevDojo.Server
 
 
         [HttpPut]
-        public async Task<IActionResult> UpdateUser([FromBody] TaskItem chosenItem)
+        public async Task<IActionResult> UpdateItem([FromBody] TaskItem chosenItem)
         {
             var User = _context.Items.FirstOrDefault(x => x.Id == chosenItem.Id);
             if (User == null)

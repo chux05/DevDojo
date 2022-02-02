@@ -119,6 +119,6 @@
 
     protected override async Task OnInitializedAsync()
     {
-        Items = await http.GetFromJsonAsync<List<TaskItem>>("api/Item");
+        Items = await http.GetFromJsonAsync<List<TaskItem>>("api/Items");
     }
 }
