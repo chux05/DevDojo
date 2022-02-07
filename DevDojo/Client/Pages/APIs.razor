@@ -1,0 +1,61 @@
+﻿@page "/apis"
+@inject HttpClient http
+
+<style>
+
+    .wrapper {
+        height: 100vh;
+        width: 100%;
+    }
+</style>
+
+<h3 class="text-center">APIs</h3>
+
+@if (Enter != null)
+{
+    <h5 class="text-center"> This page contains a list of @Enter.Count API's. Browse to your heart's content</h5>
+
+    <div class="wrapper">
+
+        <div class="row justify-content-center">
+            @foreach (var item in Entries)
+            {
+                <div class="card col-3 mb-5 m-3">
+                    <div class="card-body">
+                        <h5 class="card-title" style="font-size: 2em;">@item.API</h5>
+                        <hr />
+                        <p class="card-text">@item.Description</p>
+                        <p>Catergory: @item.Category</p>
+                        <NavLink class="nav-link" href="@item.Link">
+                            <span class="oi oi-list-rich" aria-hidden="true"></span> API Documentation
+                        </NavLink>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+}
+else
+{
+    <h3>Loading...</h3>
+}
+
+
+@code {
+
+    APIFull Enter;
+    IEnumerable<APIEntry> Entries;
+
+    List<string> categories = new List<string>()
+    {
+        "Animals", "Anime", "Art & Design", "Business", "Calendar"
+
+    };
+    protected override async Task OnInitializedAsync()
+    {
+        Enter = await http.GetFromJsonAsync<APIFull>("https://api.publicapis.org/entries");
+        Entries = Enter.Entries;
+    }
+
+}
+
