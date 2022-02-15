@@ -1,0 +1,37 @@
+﻿@page "/profile"
+@inject HttpClient http
+
+<style>
+    body {
+        background-color: #19a2ae;
+    }
+</style>
+
+<h3>My Profile</h3>
+
+@if (root != null)
+{
+<div class="row justify-content-center">
+
+    @foreach (var item in results)
+    {
+        <div class="card justify-content-center col-6 mr-4 mb-3">
+            <div class="card-body">
+                <h5 class="card-title justify-content-center" style="font-size: 2em;">@item.name.first</h5>
+            </div>
+        </div>
+    }
+
+</div>
+}
+
+@code {
+    Root root = new Root();
+    List<Result> results = new List<Result>();
+
+    protected override async Task OnInitializedAsync()
+    {
+        root = await http.GetFromJsonAsync<Root>("https://randomuser.me/api/");
+        results = root.results; //returns results as a single person even though it is a list
+    }
+}
