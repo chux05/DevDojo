@@ -106,4 +106,9 @@ namespace DevDojo.Client.Shared
         public List<Result> results { get; set; }
         public Info info { get; set; }
     }
+    public class RootModel
+    {
+        public List<Result> results { get; set; }
+        public Info info { get; set; }
+    }
 }
