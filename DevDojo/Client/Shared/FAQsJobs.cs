@@ -6,11 +6,6 @@ using System.Threading.Tasks;
 namespace DevDojo.Client.Shared
 {
     //Armand
-    public class FAQ
-    {
-        public string Question { get; set; }
-        public string Answer { get; set; }
-    }
 
     //Teboho
     public class Job

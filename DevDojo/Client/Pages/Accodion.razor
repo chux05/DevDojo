@@ -1,5 +1,6 @@
-﻿@page "/job"
+﻿@page "/faq"
 @inject HttpClient httpClient
+@using DevDojo.Shared
 
 <h3 class="text-center">FAQ</h3>
 
@@ -7,7 +8,11 @@
 
     @if (FAQs != null)
     {
-
+        foreach (var item in FAQs)
+        {
+            <h1>@item.Question</h1>
+            <h5>@item.Answer</h5>
+        }
     }
     else
     {
@@ -23,7 +28,7 @@
     List<FAQ> FAQs { get; set; } = new List<FAQ>();
     protected override async Task OnInitializedAsync()
     {
-        FAQs = await httpClient.GetFromJsonAsync<List<FAQ>>($"https://jsonkeeper.com/b/BTLE");
+        FAQs = await httpClient.GetFromJsonAsync<List<FAQ>>($"api/faq");
 
     }
 

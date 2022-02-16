@@ -5,7 +5,7 @@
 
 <div class="container" style="height:90vh; margin-top:5vh;">
 
-    @if (Jobs != null)
+    @if (jobs != null)
     {
 
     }
@@ -20,12 +20,12 @@
 @code {
 
 
-    List<Job> Jobs { get; set; } = new List<Job>();
+    List<Job> jobs { get; set; } = new List<Job>();
     Job displayJobDetail { get; set; } = new Job();
 
     protected override async Task OnInitializedAsync()
     {
-        Jobs = await httpClient.GetFromJsonAsync<List<Job>>($"https://xebecapi.azurewebsites.net/api/job/");
+        jobs = await httpClient.GetFromJsonAsync<List<Job>>($"https://xebecapi.azurewebsites.net/api/job/");
 
     }
 
