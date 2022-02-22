@@ -1,5 +1,75 @@
 ﻿@page "/daniel"
-<h3>Daniel</h3>
+
+<style>
+    .my-container {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .my-card{
+        width: 400px;
+        height: 600px;
+        border-radius: 10px;
+        background-color: white;
+    }
+    .my-card-top {
+        width: 100%;
+        height: 60%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: white;
+        border-radius: 10px;
+    }
+    .my-card-body-1 {
+        width: 100%;
+        height: 20%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: white;
+        text-align: center;
+    }
+    .my-card-body-2 {
+        width: 100%;
+        height: 20%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: white;
+        border-radius: 10px;
+        text-align: center;
+        color: grey;
+    }
+</style>
+
+<div class="my-container">
+
+    <div class="my-card shadow">
+        <div class="my-card-top">
+            <img src="/assets/Dan/image-qr-code.png" style="width: 80%; height: 80%; border-radius: 10px;" />
+        </div>
+        <div class="my-card-body-1">
+            <h4>
+                <b>
+                    Improve your front-end skills by building projects
+                </b>
+            </h4>
+        </div>
+        <div class="my-card-body-2">
+            <p>
+                Scan the QR code to visit Frontend Mentor and take your coding skills to the next level
+            </p>
+        </div>
+    </div>
+
+</div>
+
+
+
+
 
 @code {
 
