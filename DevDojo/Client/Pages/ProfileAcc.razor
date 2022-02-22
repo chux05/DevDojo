@@ -1,0 +1,39 @@
+﻿@page "/profile"
+@inject HttpClient http
+@using DevDojo.Shared
+
+<style>
+    body {
+        background-color: #19a2ae;
+    }
+</style>
+
+<h3>My Profile</h3>
+
+@if (root != null)
+{
+<div class="row justify-content-center">
+
+    @foreach (var item in results)
+    {
+        <div class="card justify-content-center">
+            <div class="card-body">
+               
+            </div>
+        </div>
+    }
+
+</div>
+}
+
+@code {
+    Root root = new Root();
+    List<Result> results = new List<Result>();
+
+
+    protected override async Task OnInitializedAsync()
+    {
+        root = await http.GetFromJsonAsync<Root>("https://randomuser.me/api/");
+        results = root.results; //returns results as a single person even though it is a list
+    }
+}

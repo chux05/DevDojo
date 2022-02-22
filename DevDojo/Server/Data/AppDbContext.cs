@@ -19,7 +19,9 @@ namespace DevDojo.Server
             base.OnModelCreating(modelBuilder);
 
             modelBuilder.ApplyConfiguration(new ItemConfiguration());
+            modelBuilder.ApplyConfiguration(new PersonConfiguration());
         }
         public DbSet<TaskItem> Items { get; set; }
+        public DbSet<Person> Persons { get; set; }
     }
 }
