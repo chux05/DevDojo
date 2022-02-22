@@ -1,5 +1,44 @@
 ﻿@page "/promise"
-<h3>Promise</h3>
+<style>
+    .container-fluid{
+        
+    }
+    .card{
+        max-width: 25vw;
+        border-radius: 10px !important;
+    }
+    .card-img-top{
+        
+    }
+    .grey{
+        color: #6D6F78;
+    }
+    .annual{
+        background: #F5F7FF;
+    }
+    
+</style>
+<div class="container-fluid d-flex align-items-center justify-content-center">
+    <div class="card">
+        <img style="object-fit: cover;" src="/assets/Pro/illustration-hero.svg" class="card-img-top" alt="img here">
+        <div class="card-body">
+            <h4 class="text-center">Order Summary</h4>
+            <p class="card-text grey text-wrap">You can now listen to millions of songs, audiobooks and podcasts on any device anywhere you like</p>
+            <div class="annual d-flex ">
+                <img style="height: 7vh;" class="music-image" src="/assets/Pro/icon-music.svg">
+                <div>
+                    <p>Annual Plan</p>
+                    <p>$59.99 / year</p>
+                </div>
+                <a>Change Plan</a>
+            </div>
+            <p class="text-center d-flex align-items-center justify-content-center">
+                <a href="Promise" class="btn btn-primary">Process to Payment</a>
+            </p>
+            <p class="text-center grey">Cancel Order</p>
+        </div>
+    </div>
+</div>
 
 @code {
 
